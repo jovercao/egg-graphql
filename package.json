@@ -1,6 +1,6 @@
 {
   "name": "egg-graphql-partialable",
-  "version": "2.6.4-beta05",
+  "version": "2.6.4-beta09",
   "description": "egg graphql plugin",
   "eggPlugin": {
     "name": "graphql"
@@ -15,7 +15,6 @@
   "dependencies": {
     "apollo-server-koa": "^2.0.4",
     "apollo-server-module-graphiql": "^1.4.0",
-    "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "graphql-tools": "^3.1.1",
     "lodash": "^4.17.10"
