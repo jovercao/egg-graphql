@@ -1,6 +1,6 @@
 {
   "name": "egg-graphql-partialable",
-  "version": "2.6.7",
+  "version": "2.6.8",
   "description": "egg graphql plugin",
   "eggPlugin": {
     "name": "graphql"
@@ -28,6 +28,7 @@
     "egg-mock": "^3.10.0",
     "eslint": "^4.6.1",
     "eslint-config-egg": "^5.1.1",
+    "graphql": "^14.5.8",
     "mysql": "^2.12.0",
     "supertest": "^3.0.0",
     "webstorm-disable-index": "^1.2.0"

@@ -6,13 +6,21 @@ const gql = require('graphql-tag');
 module.exports = app => {
   class GraphqlService extends app.Service {
 
-    async query(requestString) {
+    async query(text, variables, operationName) {
+      const res = this.execute(`query ${text}`, variables, operationName);
+      return res;
+    }
+
+    async mutation(text, variables, operationName) {
+      const res = this.execute(`mutation ${text}`, variables, operationName);
+      return res;
+    }
+
+    async execute(query, variables, operationName) {
       let result = {};
       const ctx = this.ctx;
 
       try {
-        const params = JSON.parse(requestString);
-        const { query, variables, operationName } = params;
         // GraphQL source.
         // https://github.com/apollostack/graphql-tag#caching-parse-results
         const documentAST = gql`${query}`;
@@ -45,6 +53,7 @@ module.exports = app => {
 
       return result;
     }
+
   }
 
   return GraphqlService;
