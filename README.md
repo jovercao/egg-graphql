@@ -8,7 +8,7 @@
 2. 添加代码编译报错提示（精确到行列），帮助你迅速找到grahql错误文件位置
 3. 解决了对graphql及graphql-tools版本依赖过旧带来的问题。
 
-## #import指定使用方式
+## #import指令使用方式
 
 ```graphql
 # user.graphql
