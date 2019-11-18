@@ -10,19 +10,55 @@
 
 ## #import指令使用方式
 
+**目录结构如下：**
+
+- src
+  - user
+    - schema
+    - user.graphq
+    - extFields.graphql
+
+**文件内容如下：**
+
+```graphql
+# schema.graphql
+#import ./user.graphql
+
+type Query {
+  user(id: Int!): User!
+}
+```
+
 ```graphql
 # user.graphql
 type User {
   name: String!
   age: Int!
   password: String
-  #import recFields.graphql
+  #import ./extFields.graphql
 }
 ```
 
 ```graphql
-# recFields.graphql
+# extFields.graphql
 enabled: Boolean!
 createAt: Date!
 updateAt: Date!
+```
+
+**编译后结果：**
+
+```graphql
+type User {
+  name: String!
+  age: Int!
+  password: String
+  enabled: Boolean!
+  createAt: Date!
+  updateAt: Date!
+}
+
+type Query {
+  user(id: Int!): User!
+}
 ```
