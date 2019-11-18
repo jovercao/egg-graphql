@@ -14,8 +14,8 @@
 
 - src
   - user
-    - schema
-    - user.graphq
+    - schema.graphql
+    - user.graphql
     - extFields.graphql
 
 **文件内容如下：**
