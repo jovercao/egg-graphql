@@ -1,6 +1,9 @@
 'use strict';
 
 const SYMBOL_CONNECTOR = Symbol('connector');
+const _ = require('lodash');
+
+let connectorMapps;
 
 module.exports = {
 
@@ -12,11 +15,26 @@ module.exports = {
   get connector() {
     /* istanbul ignore else */
     if (!this[SYMBOL_CONNECTOR]) {
-      const connectors = {};
-      for (const [ type, Class ] of this.app.connectorClass) {
-        connectors[type] = new Class(this);
+      if (!connectorMapps) {
+        connectorMapps = {};
+        for (const [ key, value ] of this.app.connectorClass) {
+          connectorMapps[key] = value;
+        }
       }
-      this[SYMBOL_CONNECTOR] = connectors;
+      // const connectors = {};
+      // for (const [ type, Class ] of this.app.connectorClass) {
+      //   connectors[type] = new Class(this);
+      // }
+      // this[SYMBOL_CONNECTOR] = connecotrs;
+      this[SYMBOL_CONNECTOR] = new Proxy({}, {
+        get: (target, name) => {
+          if (!target[name] && connectorMapps[name]) {
+            const Class = connectorMapps[name];
+            target[name] = new Class(this);
+          }
+          return target[name];
+        },
+      });
     }
     return this[SYMBOL_CONNECTOR];
   },
