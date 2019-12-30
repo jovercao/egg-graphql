@@ -1,7 +1,6 @@
 'use strict';
 
 const SYMBOL_CONNECTOR = Symbol('connector');
-const _ = require('lodash');
 
 let connectorMapps;
 
