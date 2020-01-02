@@ -1,6 +1,6 @@
 {
   "name": "egg-graphql-partialable",
-  "version": "2.6.13",
+  "version": "2.6.14",
   "description": "egg graphql plugin",
   "eggPlugin": {
     "name": "graphql"
