@@ -35,6 +35,9 @@ function graphiqlKoa(options) {
 
 module.exports = (_, app) => {
   const options = app.config.graphql;
+  const logOnError = options.logOnError;
+  const logOnExecute = options.logOnExecute;
+  const debug = options.debug;
   const graphQLRouter = options.router;
   let graphiql = true;
 
@@ -56,9 +59,15 @@ module.exports = (_, app) => {
       if (options.onPreGraphQL) {
         await options.onPreGraphQL(ctx);
       }
+      console.log(process.env.NODE_ENV)
+      const formatError = logOnError && (error => ctx.logger.error(error))
+      const formatResponse = logOnExecute && (reponse => ctx.logger.info(reponse))
       return graphqlKoa({
         schema: app.schema,
         context: ctx,
+        debug,
+        formatError,
+        formatResponse,
       })(ctx);
     }
     await next();
