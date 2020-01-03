@@ -59,9 +59,14 @@ module.exports = (_, app) => {
       if (options.onPreGraphQL) {
         await options.onPreGraphQL(ctx);
       }
-      console.log(process.env.NODE_ENV)
-      const formatError = logOnError && (error => ctx.logger.error(error))
-      const formatResponse = logOnExecute && (reponse => ctx.logger.info(reponse))
+      const formatError = logOnError && (error => {
+        ctx.logger.error(error);
+        return error;
+      });
+      const formatResponse = logOnExecute && (reponse => {
+        ctx.logger.info(reponse);
+        return reponse;
+      });
       return graphqlKoa({
         schema: app.schema,
         context: ctx,
