@@ -41,9 +41,6 @@ module.exports = app => {
         /* istanbul ignore if */
         if (result && result.errors) {
           result.errors = result.errors.map(formatError);
-          if (result.errors.length > 0) {
-            throw new Error(`Gql 查询时发生错误：${result.errors}`);
-          }
         }
       } catch (e) {
         this.logger.error(e);
@@ -54,6 +51,9 @@ module.exports = app => {
         };
       }
 
+      if (result && result.errors && result.errors.length > 0) {
+        throw new Error(`Gql 查询时发生错误：${JSON.stringify(result.errors)}`);
+      }
       return result.data;
     }
 
