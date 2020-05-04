@@ -1,6 +1,6 @@
 {
-  "name": "egg-graphql-partialable",
-  "version": "2.6.17",
+  "name": "@jovercao/egg-graphql",
+  "version": "0.1.0",
   "description": "egg graphql plugin",
   "eggPlugin": {
     "name": "graphql"
@@ -13,10 +13,13 @@
     "orm"
   ],
   "dependencies": {
+    "apollo-server-cache-memcached": "^0.6.4",
+    "apollo-server-cache-redis": "^1.1.6",
     "apollo-server-koa": "^2.0.4",
     "apollo-server-module-graphiql": "^1.4.0",
     "graphql-tag": "^2.9.2",
     "graphql-tools": "^4.0.6",
+    "is-type-of": "^1.2.1",
     "lodash": "^4.17.10"
   },
   "devDependencies": {
@@ -42,7 +45,8 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "ets": "ets"
   },
   "files": [
     "app.js",
