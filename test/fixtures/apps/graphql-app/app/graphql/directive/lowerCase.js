@@ -3,7 +3,7 @@
 const { SchemaDirectiveVisitor } = require('graphql-tools');
 const { defaultFieldResolver } = require('graphql');
 
-class LowerCaseDirective extends SchemaDirectiveVisitor {
+module.exports = class LowerCaseDirective extends SchemaDirectiveVisitor {
   visitFieldDefinition(field) {
     const { resolve = defaultFieldResolver } = field;
     field.resolve = async function(...args) {
@@ -14,8 +14,4 @@ class LowerCaseDirective extends SchemaDirectiveVisitor {
       return result;
     };
   }
-}
-
-module.exports = {
-  lowerCase: LowerCaseDirective,
 };

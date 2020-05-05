@@ -1,0 +1,12 @@
+type Query {
+  version: String!
+}
+type Mutation {
+  hello(name: String!): String!
+}
+
+#import ./schema/framework.gql
+#import ./schema/lowerCase.gql
+#import ./schema/project.gql
+#import ./schema/upper.gql
+#import ./schema/user.gql

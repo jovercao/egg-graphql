@@ -1,5 +1,0 @@
-type Query {
-  # Token表
-  getTokenById(input: GetTokenByIdReq): GetTokenByIdRes
-  getTokenList(input: GetTokenListReq): GetTokenListRes
-}

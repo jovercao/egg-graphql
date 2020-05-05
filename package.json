@@ -1,6 +1,6 @@
 {
   "name": "@jovercao/egg-graphql",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "egg graphql plugin",
   "eggPlugin": {
     "name": "graphql"
@@ -17,6 +17,7 @@
     "apollo-server-cache-redis": "^1.1.6",
     "apollo-server-koa": "^2.0.4",
     "apollo-server-module-graphiql": "^1.4.0",
+    "glob": "^7.1.6",
     "graphql-tag": "^2.9.2",
     "graphql-tools": "^4.0.6",
     "is-type-of": "^1.2.1",

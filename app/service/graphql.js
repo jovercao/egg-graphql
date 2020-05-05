@@ -1,6 +1,6 @@
 'use strict';
 
-const { execute, formatError } = require('graphql');
+const { execute } = require('graphql');
 const gql = require('graphql-tag');
 
 module.exports = app => {
@@ -39,12 +39,10 @@ module.exports = app => {
 
         // Format any encountered errors.
         /* istanbul ignore if */
-        if (result && result.errors) {
-          result.errors = result.errors.map(formatError);
-        }
+        // if (result && result.errors) {
+        //   result.errors = result.errors.map(formatError);
+        // }
       } catch (e) {
-        this.logger.error(e);
-
         result = {
           data: {},
           errors: [ e ],
@@ -52,6 +50,7 @@ module.exports = app => {
       }
 
       if (result && result.errors && result.errors.length > 0) {
+        result.errors.forEach(e => this.logger.error(e));
         throw new Error(`Gql 查询时发生错误：${JSON.stringify(result.errors)}`);
       }
       return result.data;

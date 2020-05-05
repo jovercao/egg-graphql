@@ -1,6 +1,0 @@
-
-type Framework {
-  id: Int!
-  name: String!
-  projects: [Project]
-}

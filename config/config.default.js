@@ -1,7 +1,11 @@
 'use strict';
 
 exports.graphql = {
-  router: '/graphql',
+  mountUrl: '/graphql',
+  schemaFile: 'app/graphql/schema.gql',
+  connectorDir: 'app/graphql/connector',
+  resolverDir: 'app/graphql/resolver',
+  directiveDir: 'app/graphql/directive',
   debug: false,
   tracing: false,
   logOnExecute: true,

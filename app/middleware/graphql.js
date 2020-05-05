@@ -27,7 +27,7 @@ module.exports = (_, app) => {
 
   return async (ctx, next) => {
     /* istanbul ignore else */
-    if (ctx.path !== options.router) {
+    if (ctx.path !== options.mountUrl) {
       return next();
     }
     if (ctx.request.accepts([ 'json', 'html' ]) === 'html' && options.graphiql !== false) {
@@ -35,7 +35,7 @@ module.exports = (_, app) => {
         await options.onPreGraphiQL(ctx);
       }
       const query = ctx.request.query;
-      ctx.body = await resolveGraphiQLString(query, { endpointURL: options.router }, ctx);
+      ctx.body = await resolveGraphiQLString(query, { endpointURL: options.mountUrl }, ctx);
       ctx.set('Content-Type', 'text/html');
       return;
     }

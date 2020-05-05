@@ -3,7 +3,7 @@
 const assert = require('assert');
 const mm = require('egg-mock');
 
-describe('test/app/middleware.test.js', () => {
+describe('test/app/middleware/graphql.test.js', () => {
   let app;
 
   before(() => {
@@ -32,7 +32,7 @@ describe('test/app/middleware.test.js', () => {
       .get('/user')
       .expect(200);
 
-    assert.deepEqual(resp.body.data, {
+    assert.deepEqual(resp.body, {
       user: {
         name: 'name2',
       },
@@ -55,7 +55,7 @@ describe('test/app/middleware.test.js', () => {
       .get('/framework')
       .expect(200);
 
-    assert.deepEqual(resp.body.data, {
+    assert.deepEqual(resp.body, {
       framework: {
         name: 'framework2',
       },
@@ -63,7 +63,7 @@ describe('test/app/middleware.test.js', () => {
   });
 });
 
-describe('test/app/middleware.test.js', () => {
+describe('test/app/middleware/graphql.test.js', () => {
   let app;
 
   before(() => {
