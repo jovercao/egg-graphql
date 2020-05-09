@@ -51,7 +51,7 @@ module.exports = (_, app) => {
       return reponse;
     });
     return graphqlKoa({
-      schema: app.schema,
+      schema: app.graphql.schema,
       context: ctx,
       debug: options.debug,
       tracing: options.tracing,

@@ -25,7 +25,7 @@ module.exports = app => {
         // https://github.com/apollostack/graphql-tag#caching-parse-results
         const documentAST = gql`${query}`;
         const context = ctx;
-        const schema = this.app.schema;
+        const schema = this.app.graphql.schema;
 
         // http://graphql.org/graphql-js/execution/#execute
         result = await execute(
