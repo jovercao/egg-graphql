@@ -10,6 +10,8 @@ exports.graphql = {
   tracing: false,
   logOnExecute: true,
   logOnError: true,
+  graphiql: true,
+  graphiqlHeaders: '',
   cache: {
     enabled: false,
     type: 'memcached',
