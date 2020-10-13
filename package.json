@@ -1,6 +1,6 @@
 {
   "name": "@jovercao/egg-graphql",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "egg graphql plugin",
   "eggPlugin": {
     "name": "graphql"
@@ -70,6 +70,7 @@
   "author": "jtyjty99999",
   "license": "MIT",
   "publishConfig": {
-    "registry": "http://npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }
