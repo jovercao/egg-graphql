@@ -68,5 +68,8 @@
   },
   "homepage": "https://github.com/eggjs/egg-graphql#readme",
   "author": "jtyjty99999",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "http://npmjs.org/"
+  }
 }
