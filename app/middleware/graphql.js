@@ -7,6 +7,7 @@ const { graphqlKoa } = require('apollo-server-koa/dist/koaApollo');
 
 // This has been newly imported, because in v2 of apollo-server, this is removed.
 const { resolveGraphiQLString } = require('apollo-server-module-graphiql');
+// const resolveGraphiQLString = require('../../lib/graphiql')
 
 module.exports = (_, app) => {
   const options = app.config.graphql;
@@ -25,6 +26,8 @@ module.exports = (_, app) => {
     }
   }
 
+  const passHeader = typeof options.graphiqlHeaders === 'object' ? JSON.stringify(options.graphiqlHeaders) : options.graphiqlHeaders;
+
   return async (ctx, next) => {
     /* istanbul ignore else */
     if (ctx.path !== options.mountUrl) {
@@ -35,7 +38,8 @@ module.exports = (_, app) => {
         await options.onPreGraphiQL(ctx);
       }
       const query = ctx.request.query;
-      ctx.body = await resolveGraphiQLString(query, { endpointURL: options.mountUrl }, ctx);
+      ctx.body = await resolveGraphiQLString(query, { endpointURL: options.mountUrl, passHeader }, ctx);
+      // ctx.body = resolveGraphiQLString({ endpointURL: options.mountUrl, headers: '' })
       ctx.set('Content-Type', 'text/html');
       return;
     }
