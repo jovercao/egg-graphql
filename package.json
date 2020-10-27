@@ -9,8 +9,7 @@
     "egg",
     "graphql",
     "egg-plugin",
-    "eggPlugin",
-    "orm"
+    "eggPlugin"
   ],
   "dependencies": {
     "apollo-server-cache-memcached": "^0.6.4",
@@ -67,7 +66,7 @@
     "url": "https://github.com/eggjs/egg/issues"
   },
   "homepage": "https://github.com/eggjs/egg-graphql#readme",
-  "author": "jtyjty99999",
+  "author": "jtyjty99999, jovercao",
   "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
