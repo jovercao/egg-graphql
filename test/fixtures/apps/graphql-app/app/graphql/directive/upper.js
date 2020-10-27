@@ -1,10 +1,19 @@
 'use strict';
 
-module.exports = function upper(next) {
-  return next().then(str => {
-    if (typeof str === 'string') {
-      return str.toUpperCase();
+const { defaultFieldResolver } = require('graphql');
+const { SchemaDirectiveVisitor } = require('graphql-tools');
+
+module.exports = () => {
+  return class UpperDriective extends SchemaDirectiveVisitor {
+    visitFieldDefinition(field) {
+      const resolve = field.resolve || defaultFieldResolver;
+      field.resolve = async function(...args) {
+        const str = await resolve.call(this, ...args);
+        if (typeof str === 'string') {
+          return str.toUpperCase();
+        }
+        return str;
+      };
     }
-    return str;
-  });
+  };
 };
